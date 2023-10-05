@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="2" author="goktug.bati">
+        <insert tableName="account">
+            <column name="id" value="1"/>
+            <column name="name" value="Goktug Ridango"/>
+            <column name="balance" valueNumeric="100.00"/>
+        </insert>
+        <insert tableName="account">
+            <column name="id" value="2"/>
+            <column name="name" value="Mark Twain"/>
+            <column name="balance" valueNumeric="100.00"/>
+        </insert>
+        <insert tableName="account">
+            <column name="id" value="3"/>
+            <column name="name" value="Ahmet Hamdi Tanpinar"/>
+            <column name="balance" valueNumeric="3000.00"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
