@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+	id 'org.asciidoctor.jvm.convert' version '3.3.2'
+}
+
+group = 'com.ridango.application'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+asciidoctor {
+	sourceDir  file('src/main/asciidoc')
+	attributes \
+		'snippets': file('build/generated-snippets')
+	outputDir  file('src/main/resources/static/docs')
+}
+
+dependencies {
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+	implementation 'org.liquibase:liquibase-core'
+	implementation 'org.jetbrains:annotations:24.0.0'
+	runtimeOnly 'com.h2database:h2'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web',
+			'org.springframework.boot:spring-boot-starter-data-jpa',
+			'org.springframework.boot:spring-boot-starter-validation',
+			"org.springframework.boot:spring-boot-starter-hateoas"
+
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.mockito:mockito-core:3.12.4'
+	testImplementation 'org.mockito:mockito-junit-jupiter:3.12.4'
+}
+
+test {
+	useJUnitPlatform()
+}
